@@ -1,15 +1,13 @@
 package main
 
 import (
-	"fmt"
+	"html/template"
 	"net/http"
-	"text/template"
 )
 
 var temp = template.Must(template.ParseGlob("templates/*.html"))
 
 func main() {
-	fmt.Println("Loja")
 	http.HandleFunc("/", index)
 	http.ListenAndServe(":8000", nil)
 }
