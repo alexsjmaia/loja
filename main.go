@@ -1,17 +1,12 @@
 package main
 
 import (
-	"html/template"
+	"loja/routes"
 	"net/http"
 )
 
-var temp = template.Must(template.ParseGlob("templates/*.html"))
-
 func main() {
-	http.HandleFunc("/", index)
-	http.ListenAndServe(":8000", nil)
-}
+	routes.CarregaRotas()
 
-func index(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "Index", nil)
+	http.ListenAndServe(":8000", nil)
 }
