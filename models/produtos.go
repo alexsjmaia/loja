@@ -1,7 +1,6 @@
 package models
 
 import (
-	"log"
 	"loja/db"
 )
 
@@ -51,16 +50,14 @@ func CriarNovoProduto(nome, descricao string, preco float64, quantidade int) {
 	db := db.ConectaComBancoDeDados()
 	defer db.Close()
 
-	insereDadosBoBanco, err := db.Prepare("insert into produtos (nome, descricao, preco, quantidade) values ($1, $2, $3, $4)")
+	insereDadosNoBanco, err := db.Prepare("insert into produtos (nome, descricao, preco, quantidade) values ($1, $2, $3, $4)")
 	if err != nil {
 		panic(err.Error())
 	}
-	insereDadosBoBanco.Exec(nome, descricao, preco, quantidade)
+	insereDadosNoBanco.Exec(nome, descricao, preco, quantidade)
 }
 
 func DeletaProduto(id string) {
-	log.Fatal("Chegou no Deleta")
-	log.Fatal("Chegou aqui")
 	db := db.ConectaComBancoDeDados()
 	defer db.Close()
 
